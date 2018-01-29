@@ -1,0 +1,22 @@
+#!/bin/sh
+
+set -e
+
+user="blackbox-exporter"
+group="blackbox-exporter"
+gecos="Prometheus Blackbox Exporter"
+
+case "$1" in
+    install|upgrade)
+        if ! getent group "$group" >/dev/null; then
+            addgroup --system "$group" --quiet
+        fi
+
+        if ! getent passwd "$user" >/dev/null; then
+            adduser --system --ingroup "$group" --disabled-password \
+                    --gecos "$gecos" --shell /bin/false --quiet "$user"
+        fi
+        ;;
+esac
+
+exit 0
