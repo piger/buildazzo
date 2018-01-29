@@ -1,6 +1,7 @@
 [Unit]
 Description=OAuth2 Proxy
 Documentation=https://github.com/bitly/oauth2_proxy
+After=network.target
 
 [Service]
 Restart=always
