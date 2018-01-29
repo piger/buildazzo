@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -e
+
+user="prometheus"
+group="prometheus"
+data_dir="/var/lib/prometheus"
+
+case "$1" in
+    purge)
+        if getent passwd "$user" >/dev/null; then
+            userdel "$user"
+        fi
+        if getent group "$group" >/dev/null; then
+            groupdel "$group"
+        fi
+        rm -rf "$data_dir"
+        ;;
+esac
+
+exit 0

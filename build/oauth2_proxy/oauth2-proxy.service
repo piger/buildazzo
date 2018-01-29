@@ -1,0 +1,19 @@
+[Unit]
+Description=OAuth2 Proxy
+Documentation=https://github.com/bitly/oauth2_proxy
+
+[Service]
+Restart=always
+User=oauth2-proxy
+Group=oauth2-proxy
+ExecStart=/usr/bin/oauth2-proxy -config=/etc/oauth2-proxy.cfg
+
+NoNewPrivileges=yes
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
+ReadOnlyPaths=/
+
+[Install]
+WantedBy=multi-user.target

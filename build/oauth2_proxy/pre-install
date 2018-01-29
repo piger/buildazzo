@@ -1,0 +1,21 @@
+#!/bin/sh
+
+set -e
+
+user=oauth2-proxy
+group=oauth2-proxy
+
+case "$1" in
+    install|upgrade)
+        if ! getent group $group >/dev/null; then
+            addgroup --system $group --quiet
+        fi
+
+        if ! getent passwd $user >/dev/null; then
+            adduser --system --ingroup $group --disabled-password \
+                    --gecos "OAuth2 Proxy" --shell /bin/false --quiet $user
+        fi
+        ;;
+esac
+
+exit 0

@@ -1,0 +1,20 @@
+[Unit]
+Description=Prometheus
+Documentation=https://github.com/prometheus/prometheus
+
+[Service]
+User=prometheus
+Group=prometheus
+EnvironmentFile=/etc/default/prometheus
+ExecStart=/usr/bin/node-exporter $ARGS
+Restart=always
+
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
+ReadOnlyPaths=/
+ReadWritePaths=/var/lib/prometheus
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,29 @@
+#!/bin/sh
+
+set -e
+
+service="node-exporter.service"
+
+stopping="false"
+
+case "$1" in
+    remove)
+        stopping="true"
+        ;;
+    upgrade)
+        stopping="false"
+        ;;
+    deconfigure|failed-upgrade)
+        ;;
+esac
+
+if [ "$stopping" = "false" ]; then
+    exit 0
+fi
+
+if [ -x /bin/systemctl ]; then
+    systemctl --no-reload stop "$service" >/dev/null 2>&1 || true
+    systemctl disable "$service" >/dev/null 2>&1 || true
+fi
+
+exit 0

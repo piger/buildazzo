@@ -1,0 +1,4 @@
+ARGS="--collector.diskstats.ignored-devices=^(ram|loop|fd)\d+$ \
+    --collector.filesystem.ignored-mount-points=^/(sys|proc|dev|run)($|/) \
+    --collector.textfile.directory=/var/lib/node-exporter \
+    --collector.systemd"

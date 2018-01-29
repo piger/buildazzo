@@ -1,0 +1,4 @@
+/build/*/cache
+/build/*/pkg
+/build/*/tmp-*
+/build/*.deb

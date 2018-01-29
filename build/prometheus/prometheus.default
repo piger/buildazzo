@@ -1,0 +1,5 @@
+ARGS="--config.file /etc/prometheus/prometheus.yml \
+    --web.external-url https://example.com/prometheus/ \
+    --web.console.libraries /usr/share/prometheus/prometheus/console_libraries \
+    --web.console.templates /usr/share/prometheus/prometheus/consoles/ \
+    --storage.tsdb.path /var/lib/prometheus"
