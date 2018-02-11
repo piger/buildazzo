@@ -13,7 +13,7 @@ class Alertmanager < FPM::Cookery::Recipe
   pre_install 'pre-install'
   pre_uninstall 'pre-uninstall'
   post_install 'post-install'
-  post_uninstall 'post-uninstall'  
+  post_uninstall 'post-uninstall'
 
   def build
   end

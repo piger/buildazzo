@@ -2,24 +2,7 @@
 
 set -e
 
-user="prometheus"
-group="prometheus"
-data_dir="/var/lib/prometheus"
-gecos="Prometheus"
-
-case "$1" in
-    install|upgrade)
-        if ! getent group "$group" >/dev/null; then
-            addgroup --system "$group" --quiet
-        fi
-
-        if ! getent passwd "$user" >/dev/null; then
-            adduser --system --ingroup "$group" --disabled-password \
-                    --gecos "$gecos" --shell /bin/false --quiet "$user"
-        fi
-        ;;
-esac
-
-install -d -o "$user" -g "$group" -m 0750 "$data_dir"
+install -d -o prometheus -g prometheus -m 0750 /var/lib/prometheus || true
+install -d -o prometheus -g prometheus -m 0750 /var/log/prometheus || true
 
 exit 0

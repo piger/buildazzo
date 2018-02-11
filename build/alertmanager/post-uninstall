@@ -2,19 +2,10 @@
 
 set -e
 
-user="alertmanager"
-group="alertmanager"
-data_dir="/var/lib/alertmanager"
-
 case "$1" in
     purge)
-        if getent passwd "$user" >/dev/null; then
-            userdel "$user"
-        fi
-        if getent group "$group" >/dev/null; then
-            groupdel "$group"
-        fi
-        rm -rf "$data_dir"
+        rm -rf /var/lib/alertmanager
+        # not deleting the system user; same as the official debian package is doing.
         ;;
 esac
 
