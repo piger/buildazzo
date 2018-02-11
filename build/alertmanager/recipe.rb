@@ -19,7 +19,7 @@ class Alertmanager < FPM::Cookery::Recipe
   end
 
   def install
-    bin.install %[alertmanager amtool]
+    bin.install %w[alertmanager amtool]
     etc('alertmanager').install 'simple.yml', 'alertmanager.yml'
     root('lib/systemd/system').install workdir('alertmanager.service')
     etc('default').install workdir('alertmanager.default'), 'alertmanager'
