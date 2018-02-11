@@ -2,6 +2,23 @@
 
 set -e
 
+case "$1" in
+    configure)
+        if ! getent passwd blackbox-exporter > /dev/null; then
+            adduser --quiet --system --home /nonexistent --no-create-home \
+                    --group --gecos "Blackbox-Exporter daemon" blackbox-exporter || true
+        fi
+        ;;
+    abort-upgrade|abort-remove|abort-deconfigure)
+        :
+        ;;
+    *)
+        echo "postinst called with unknown argument '$1'" >&2
+        exit 1
+        ;;
+esac
+
+
 if [ -x /bin/systemctl ]; then
     systemctl daemon-reload
 fi
