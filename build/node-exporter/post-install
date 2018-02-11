@@ -2,6 +2,25 @@
 
 set -e
 
+case "$1" in
+    configure)
+        if ! getent passwd node-exporter > /dev/null; then
+            adduser --quiet --system --home /var/lib/node-exporter --no-create-home \
+                    --group --gecos "Node-Exporter daemon" node-exporter || true
+        fi
+
+        chown -R node-exporter:node-exporter /var/lib/node-exporter || true
+        ;;
+    abort-upgrade|abort-remove|abort-deconfigure)
+        :
+        ;;
+    *)
+        echo "postinst called with unknown argument '$1'" >&2
+        exit 1
+        ;;
+esac
+
+
 if [ -x /bin/systemctl ]; then
     systemctl daemon-reload
 fi

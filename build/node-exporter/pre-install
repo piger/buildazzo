@@ -2,24 +2,6 @@
 
 set -e
 
-user="node-exporter"
-group="node-exporter"
-data_dir="/var/lib/node-exporter"
-gecos="Prometheus Node Exporter"
-
-case "$1" in
-    install|upgrade)
-        if ! getent group "$group" >/dev/null; then
-            addgroup --system "$group" --quiet
-        fi
-
-        if ! getent passwd "$user" >/dev/null; then
-            adduser --system --ingroup "$group" --disabled-password \
-                    --gecos "$gecos" --shell /bin/false --quiet "$user"
-        fi
-        ;;
-esac
-
-install -d -o "$user" -g "$group" -m 0750 "$data_dir"
+install -d -o node-exporter -g node-exporter -m 0755 /var/lib/node-exporter || true
 
 exit 0
