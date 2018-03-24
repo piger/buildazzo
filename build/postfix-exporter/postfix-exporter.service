@@ -1,0 +1,22 @@
+[Unit]
+Description=Postfix-Exporter
+Documentation=https://github.com/kumina/postfix_exporter.git
+After=network.target,postfix@-.service
+
+[Service]
+User=postfix
+Group=postfix
+EnvironmentFile=-/etc/default/postfix-exporter
+ExecStart=/usr/bin/postfix-exporter -web.listen-address ${ADDRESS:-127.0.0.1:9154} -systemd.enable
+Restart=always
+
+NoNewPrivileges=yes
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=strict
+ReadOnlyPaths=/
+ReadWritePaths=/var/spool/postfix/public/showq
+
+[Install]
+WantedBy=multi-user.target

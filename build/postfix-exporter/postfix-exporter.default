@@ -1,0 +1,4 @@
+# postfix-exporter
+
+# Listen address
+ADDRESS="127.0.0.1:9154"
