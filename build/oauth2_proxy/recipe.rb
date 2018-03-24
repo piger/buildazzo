@@ -5,9 +5,10 @@ class Oauth2Proxy < FPM::Cookery::Recipe
 
   name 'oauth2-proxy'
   version '2.2.0'
-  revision '1'
+  revision '2'
 
   description 'A reverse proxy that provides authentication with Google, Github or other provider.'
+  maintainer 'Daniel Kertesz <daniel@spatof.org>'
   config_files '/etc/oauth2-proxy.cfg'
 
   pre_install 'pre-install'

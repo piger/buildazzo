@@ -5,9 +5,10 @@ class NodeExporter < FPM::Cookery::Recipe
 
   name 'node-exporter'
   version '0.15.2'
-  revision '1'
+  revision '2'
 
   description 'Exporter for machine metrics.'
+  maintainer 'Daniel Kertesz <daniel@spatof.org>'
   config_files '/etc/default/node-exporter'
 
   pre_install 'pre-install'

@@ -5,9 +5,10 @@ class Alertmanager < FPM::Cookery::Recipe
 
   name 'alertmanager'
   version '0.13.0'
-  revision '1'
+  revision '2'
 
   description 'Prometheus Alertmanager'
+  maintainer 'Daniel Kertesz <daniel@spatof.org>'
   config_files '/etc/alertmanager/alertmanager.yml'
 
   pre_install 'pre-install'

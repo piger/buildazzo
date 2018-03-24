@@ -5,12 +5,13 @@ class BlackboxExporter < FPM::Cookery::Recipe
 
   name 'blackbox-exporter'
   version '0.11.0'
-  revision '1'
+  revision '2'
 
   pre_uninstall 'pre-uninstall'
   post_install 'post-install'
 
   description 'Blackbox probe exporter for Prometheus.'
+  maintainer 'Daniel Kertesz <daniel@spatof.org>'
   config_files '/etc/blackbox-exporter/blackbox-exporter.yml'
 
   def build
