@@ -3,9 +3,10 @@
 #
 # Works with prometheus repositories.
 
+set -e
+
 NAME="prometheus/alertmanager"
 TMPFILE=$(mktemp /tmp/buildazzo.XXXXXX)
-
 
 fetch_release() {
     local repo="$1"

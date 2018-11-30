@@ -1,10 +1,10 @@
 class Prometheus < FPM::Cookery::Recipe
   homepage 'https://prometheus.io/'
-  source 'https://github.com/prometheus/prometheus/releases/download/v2.2.1/prometheus-2.2.1.linux-amd64.tar.gz'
-  sha256 'ec1798dbda1636f49d709c3931078dc17eafef76c480b67751aa09828396cf31'
+  source 'https://github.com/prometheus/prometheus/releases/download/v2.5.0/prometheus-2.5.0.linux-amd64.tar.gz'
+  sha256 '6f1203c3ec540346bb346641eb43a74fde2992cda23b6c9e0f876f95a646cda1'
 
   name 'prometheus'
-  version '2.2.1'
+  version '2.5.0'
   revision '1'
 
   description 'The Prometheus monitoring system and time series database.'
